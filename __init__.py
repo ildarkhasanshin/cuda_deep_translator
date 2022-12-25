@@ -12,26 +12,27 @@ except:
 
 
 class Command:
-    def translate(self, txt):
-        langs_list = GoogleTranslator().get_supported_languages()
-        lst = ''
-        for i in langs_list:
-            lst = lst + i + "\n"
-        res = dlg_menu(DMENU_LIST, lst, 0, _('Supported languages'))
-        if res is None: return
-        return GoogleTranslator(source='auto', target=langs_list[res]).translate(txt)
+    def translate(self):
+        if deep_translator_imported:
+            langs_list = GoogleTranslator().get_supported_languages()
+            lst = ''
+            for i in langs_list:
+                lst = lst + i + "\n"
+            res = dlg_menu(DMENU_LIST, lst, 0, _('Supported languages'))
+            if res is None: return
+            txt = ed.get_text_sel()
+            translated = GoogleTranslator(source='auto', target=langs_list[res]).translate(txt)
+            if len(txt) > 0:
+                return translated
+            return
 
     def res2tab(self):
-        if deep_translator_imported:
-            txt = ed.get_text_sel()
-            if len(txt) > 0:
-                translated = self.translate(txt)
-                file_open('')
-                ed.set_text_all(translated)
+        translated = self.translate()
+        if translated is not None:
+            file_open('')
+            ed.set_text_all(translated)
 
     def res2msgbox(self):
-        if deep_translator_imported:
-            txt = ed.get_text_sel()
-            if len(txt) > 0:
-                translated = self.translate(txt)
-                msg_box(translated, MB_OK+MB_ICONINFO)
+        translated = self.translate()
+        if translated is not None:
+            msg_box(translated, MB_OK+MB_ICONINFO)
