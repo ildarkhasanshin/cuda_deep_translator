@@ -1,2 +1,7 @@
+2023.01.08
++ show translation in clipboard
++ show translation in status-bar
++ option: automatic copy to clipboard
+
 2022.12.23
 initial
