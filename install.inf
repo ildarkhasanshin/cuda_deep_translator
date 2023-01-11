@@ -7,25 +7,25 @@ homepage=https://github.com/ildarkhasanshin/cuda_deep_translator
 
 [item1]
 section=commands
-caption=Deep Translator\Show translation in\New tab
+caption=Deep Translator\Show translation in new tab
 method=res2tab
 
 [item2]
 section=commands
-caption=Deep Translator\Show translation in\Message-box
+caption=Deep Translator\Show translation in message-box
 method=res2msgbox
 
 [item3]
 section=commands
-caption=Deep Translator\Show translation in\Clipboard
+caption=Deep Translator\Show translation in clipboard
 method=res2clipboard
 
 [item4]
 section=commands
-caption=Deep Translator\Show translation in\Status-bar
+caption=Deep Translator\Show translation in status-bar
 method=res2statusbar
 
 [item5]
 section=commands
-caption=Deep Translator\Show config
+caption=Deep Translator\Edit config
 method=config
